@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewdata</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        {% for x in page_obj %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.username}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.password}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+{% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}"><< Previous</a>
+{% endif %}
+
+<span class="current-page">{{ page_obj.number }}</span>
+
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Next >></a>
+{% endif %}
